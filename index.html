@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="utf-8">
+    <title>My Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+
+    <form onsubmit="return false" action="" method="get" id="form-library">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text">
+        
+        <label for="author">Author</label>
+        <input id="author" name="author" type="text">
+       
+        <label for="pages">Pages</label>
+        <input id="pages" name="pages" type="text">
+        
+        <fieldset>
+          <legend>Finish the Book?</legend>
+          
+          <input id="finishbook-yes" name="finishbook" type="radio" value="yes">
+          <label for="finishbook-yes">Yes</label>
+          
+          
+          <input id="finishbook-no" name="finishbook" type="radio" value="no">
+          <label for="finishbook-no">No</label>
+          
+          
+        </fieldset>
+        
+        
+        <input type="submit" value="submit" id="submit">
+        
+      </form>
+
+      <div class="bookshelf-wall">
+
+        <h1>Here lies the Bookshelf</h1>
+        <div class="bookshelf">
+
+
+        </div>
+
+      </div>
+
+
+
+
+
+</body>
+</html>

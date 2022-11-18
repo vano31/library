@@ -1,0 +1,23 @@
+form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+.bookshelf {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.book {
+  height: 100px;
+  width: 500px;
+  border: solid;
+}
+
