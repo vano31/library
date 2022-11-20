@@ -44,6 +44,7 @@ let submitButton = document.querySelector('#submit');
 let newDiv;
 let bookId;
 let lastIndex; 
+let booksection; //Use for adding book content via divs 
 
 //Function that counts the elements in myLibrary Array and generates a new div in div.bookshelf
 let generateLibrary = function() {
@@ -54,8 +55,54 @@ let generateLibrary = function() {
   bookId = myLibrary[lastIndex].name;
   newDiv.setAttribute('class', 'book');
   newDiv.setAttribute(`id`, `${bookId}`);
-  newDiv.textContent = `${myLibrary[lastIndex].name}\n${myLibrary[lastIndex].author}\n${myLibrary[lastIndex].pages}\n${myLibrary[lastIndex].readstatus}`;
+  //newDiv.textContent = `${myLibrary[lastIndex].name}\n${myLibrary[lastIndex].author}\n${myLibrary[lastIndex].pages}\n${myLibrary[lastIndex].readstatus}`;
 
+  let key;
+
+  for (key in myLibrary[lastIndex]) {
+
+    if (key === `readstatus`) {
+
+      booksection = document.createElement("div");
+      booksection.setAttribute("data-number", `${lastIndex}`);
+      booksection.textContent = `${myLibrary[lastIndex][key]};`
+      booksection.addEventListener(`click`, function(e) {
+        let d;
+        let changingArrayIndex;
+        if (e.target.textContent === `Yes`) {
+          e.target.textContent = `No`;
+          d = e.target.closest.getAttribute(`data-number`);
+          changingArrayIndex = parseInt(d);
+          myLibrary[changingArrayIndex].readstatus = `No`;
+
+        } else if (e.target.textContent === `No`) {
+
+          e.target.textContent = "Yes";
+          d = e.target.closest.getAttribute(`data-number`);
+          changingArrayIndex = parseInt(d);
+          myLibrary[changingArrayIndex].readstatus = `Yes`;
+
+        }
+
+
+      })
+
+      newDiv.appendChild(booksection);
+
+    } else if (key !== `readstatus`) {
+
+      booksection = document.createElement("div");
+      booksection.setAttribute(`class`, `content-${key}`); //Use for CSS decoration
+      booksection.textContent = `${myLibrary[lastIndex][key]};`
+
+      newDiv.appendChild(booksection);
+
+
+
+    } 
+
+  }
+ 
   bookshelf.appendChild(newDiv);
 
 
