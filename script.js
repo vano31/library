@@ -65,25 +65,32 @@ let generateLibrary = function() {
 
       booksection = document.createElement("div");
       booksection.setAttribute("data-number", `${lastIndex}`);
-      booksection.textContent = `${myLibrary[lastIndex][key]};`
+      booksection.textContent = `${myLibrary[lastIndex][key]}`;
       booksection.addEventListener(`click`, function(e) {
         let d;
+        let ds;
         let changingArrayIndex;
+        //console.log(e.target.textContent);
+
+      
         if (e.target.textContent === `Yes`) {
           e.target.textContent = `No`;
-          d = e.target.closest.getAttribute(`data-number`);
-          changingArrayIndex = parseInt(d);
+          d = e.target;
+          ds = d.getAttribute(`data-number`);
+          changingArrayIndex = parseInt(ds);
           myLibrary[changingArrayIndex].readstatus = `No`;
 
         } else if (e.target.textContent === `No`) {
 
           e.target.textContent = "Yes";
-          d = e.target.closest.getAttribute(`data-number`);
-          changingArrayIndex = parseInt(d);
+          d = e.target;
+          ds = d.getAttribute(`data-number`);
+          changingArrayIndex = parseInt(ds);
           myLibrary[changingArrayIndex].readstatus = `Yes`;
 
         }
-
+        
+        
 
       })
 
@@ -93,7 +100,7 @@ let generateLibrary = function() {
 
       booksection = document.createElement("div");
       booksection.setAttribute(`class`, `content-${key}`); //Use for CSS decoration
-      booksection.textContent = `${myLibrary[lastIndex][key]};`
+      booksection.textContent = `${myLibrary[lastIndex][key]}`;
 
       newDiv.appendChild(booksection);
 
