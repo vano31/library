@@ -45,6 +45,7 @@ let newDiv;
 let bookId;
 let lastIndex; 
 let booksection; //Use for adding book content via divs 
+let deleteButton;
 
 //Function that counts the elements in myLibrary Array and generates a new div in div.bookshelf
 let generateLibrary = function() {
@@ -109,6 +110,46 @@ let generateLibrary = function() {
     } 
 
   }
+
+  deleteButton = document.createElement("button");
+
+  let divToRemove;
+  let idToRemove;
+  
+  deleteButton.addEventListener(`click`, function(e) {
+    
+    
+    for (let x = 0; x < myLibrary.length; x++) {
+
+      if (myLibrary[x].name === e.target.getAttribute(`data-name`)) {
+        
+        //remove book object from myLibrary based on myLibrary[x].name
+        idToRemove = e.target.getAttribute(`data-name`);
+        console.log(e.target);
+        myLibrary.splice(x, 1);
+
+        //remove the book div from bookshelf based on bookId via .removeChild method
+        //divToRemove = document.querySelector(`#${idToRemove}`);
+        bookshelf.removeChild(bookshelf.childNodes[x + 1]);
+        //bookshelf.removeChild(document.querySelector(`#${idToRemove}`));
+
+        break;
+      }
+
+      
+
+    }
+
+
+  })
+
+
+
+
+  newDiv.appendChild(deleteButton);
+  deleteButton.setAttribute(`data-name`, `${bookId}`);
+  
+  
  
   bookshelf.appendChild(newDiv);
 
